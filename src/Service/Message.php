@@ -20,7 +20,7 @@ final class Message
         $this->messageBus = $messageBus;
     }
 
-    public function send(TestDataProvider $testDataProvider)
+    public function send(TestDataProvider $testDataProvider): void
     {
         $this->messageBus->dispatch($testDataProvider);
     }

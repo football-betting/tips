@@ -26,16 +26,16 @@ class AllMessage extends Command
         $this->redisService = $redisService;
     }
 
-    protected function configure()
+    protected function configure(): void
     {
         $this->setDescription('Test message');
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $infos = $this->redisService->getAll();
         foreach ($infos as $item) {
-            $output->writeln($item);
+            $output->writeln((string)$item);
         }
 
         return 0;

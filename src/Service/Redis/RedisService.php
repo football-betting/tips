@@ -33,14 +33,14 @@ final class RedisService
     /**
      * @param string $key
      *
-     * @return mixed
+     * @return string|null
      */
-    public function get(string $key)
+    public function get(string $key): ?string
     {
         return $this->client->get($key);
     }
 
-    public function getAll()
+    public function getAll(): array
     {
         $allKeys = $this->client->keys('*');
         return $this->mget($allKeys);
@@ -48,10 +48,11 @@ final class RedisService
 
     /**
      * @param array $keys
+     * @psalm-param array<array-key, mixed> $keys
      *
      * @return array
      */
-    public function mget(array $keys)
+    public function mget(array $keys): array
     {
         return $this->client->mget($keys);
     }

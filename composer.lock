@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b9db46ec6d6fd57b1d8b3213bfd25f20",
+    "content-hash": "4833e67d5d6d4464c65c4ba5e1d729e8",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1843,6 +1843,72 @@
                 }
             ],
             "time": "2020-10-21T13:48:04+00:00"
+        },
+        {
+            "name": "predis/predis",
+            "version": "v1.1.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/predis/predis.git",
+                "reference": "b240daa106d4e02f0c5b7079b41e31ddf66fddf8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/predis/predis/zipball/b240daa106d4e02f0c5b7079b41e31ddf66fddf8",
+                "reference": "b240daa106d4e02f0c5b7079b41e31ddf66fddf8",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.9"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.8"
+            },
+            "suggest": {
+                "ext-curl": "Allows access to Webdis when paired with phpiredis",
+                "ext-phpiredis": "Allows faster serialization and deserialization of the Redis protocol"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Predis\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Daniele Alessandri",
+                    "email": "suppakilla@gmail.com",
+                    "homepage": "http://clorophilla.net",
+                    "role": "Creator & Maintainer"
+                },
+                {
+                    "name": "Till Krüss",
+                    "homepage": "https://till.im",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "Flexible and feature-complete Redis client for PHP and HHVM",
+            "homepage": "http://github.com/predis/predis",
+            "keywords": [
+                "nosql",
+                "predis",
+                "redis"
+            ],
+            "support": {
+                "issues": "https://github.com/predis/predis/issues",
+                "source": "https://github.com/predis/predis/tree/v1.1.7"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/sponsors/tillkruss",
+                    "type": "github"
+                }
+            ],
+            "time": "2021-04-04T19:34:46+00:00"
         },
         {
             "name": "psr/cache",
@@ -6162,6 +6228,61 @@
             "time": "2019-03-29T20:06:56+00:00"
         },
         {
+            "name": "orklah/psalm-strict-types",
+            "version": "v0.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/orklah/psalm-strict-types.git",
+                "reference": "3fe1a7f9de3a6787ccd38c2dbac6e5f9bf91b35b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/orklah/psalm-strict-types/zipball/3fe1a7f9de3a6787ccd38c2dbac6e5f9bf91b35b",
+                "reference": "3fe1a7f9de3a6787ccd38c2dbac6e5f9bf91b35b",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.3|^8.0",
+                "vimeo/psalm": "^4.4.0"
+            },
+            "require-dev": {
+                "nikic/php-parser": "^4.0",
+                "phpunit/phpunit": "^9.5",
+                "psalm/plugin-phpunit": "^0.15.0"
+            },
+            "type": "psalm-plugin",
+            "extra": {
+                "psalm": {
+                    "pluginClass": "Orklah\\StrictTypes\\Plugin"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Orklah\\StrictTypes\\": [
+                        "./src"
+                    ],
+                    "Orklah\\StrictTypes\\Tests\\": [
+                        "./tests"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "orklah"
+                }
+            ],
+            "description": "Adds strict_types declaration when the file is provably safe",
+            "support": {
+                "issues": "https://github.com/orklah/psalm-strict-types/issues",
+                "source": "https://github.com/orklah/psalm-strict-types/tree/v0.1.2"
+            },
+            "time": "2021-03-08T09:35:18+00:00"
+        },
+        {
             "name": "phar-io/manifest",
             "version": "2.0.1",
             "source": {
@@ -8982,7 +9103,8 @@
     "platform": {
         "php": ">=7.4",
         "ext-ctype": "*",
-        "ext-iconv": "*"
+        "ext-iconv": "*",
+        "ext-json": "*"
     },
     "platform-dev": [],
     "platform-overrides": {

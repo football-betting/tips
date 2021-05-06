@@ -27,7 +27,7 @@ class TestMessage extends Command
         $this->message = $message;
     }
 
-    protected function configure()
+    protected function configure(): void
     {
         $this->setDescription('Test message');
     }
@@ -36,12 +36,13 @@ class TestMessage extends Command
      * @param \Symfony\Component\Console\Input\InputInterface $input
      * @param \Symfony\Component\Console\Output\OutputInterface $output
      *
+     * @throws \Exception
      * @return int
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $testDataProvider = new TestDataProvider();
-        $testDataProvider->setIdent(random_int(1,100));
+        $testDataProvider->setIdent(random_int(1, 100));
         $testDataProvider->setName('Test: ' . time());
 
         $this->message->send($testDataProvider);

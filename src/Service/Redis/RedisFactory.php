@@ -16,7 +16,7 @@ final class RedisFactory
      */
     public function __construct(ParameterBagInterface $params)
     {
-        $this->uri = $params->get('app.redis.uri');
+        $this->uri = (string)$params->get('app.redis.uri');
     }
 
     /**
