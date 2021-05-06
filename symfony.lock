@@ -5,9 +5,6 @@
     "amphp/byte-stream": {
         "version": "v1.8.1"
     },
-    "composer/package-versions-deprecated": {
-        "version": "1.11.99.1"
-    },
     "composer/semver": {
         "version": "3.2.4"
     },
@@ -136,8 +133,17 @@
     "netresearch/jsonmapper": {
         "version": "v2.1.0"
     },
+    "nette/php-generator": {
+        "version": "v3.5.3"
+    },
+    "nette/utils": {
+        "version": "v3.2.2"
+    },
     "nikic/php-parser": {
         "version": "v4.10.5"
+    },
+    "ocramius/package-versions": {
+        "version": "2.1.0"
     },
     "ondram/ci-detector": {
         "version": "3.5.1"
@@ -194,6 +200,9 @@
             "phpunit.xml.dist",
             "tests/bootstrap.php"
         ]
+    },
+    "predis/predis": {
+        "version": "v1.1.7"
     },
     "psr/cache": {
         "version": "1.0.1"
@@ -480,5 +489,17 @@
     },
     "webmozart/path-util": {
         "version": "2.3.0"
+    },
+    "xervice/config": {
+        "version": "3.1.0"
+    },
+    "xervice/console": {
+        "version": "2.1.0"
+    },
+    "xervice/core": {
+        "version": "4.0.0"
+    },
+    "xervice/data-provider": {
+        "version": "2.5.1"
     }
 }

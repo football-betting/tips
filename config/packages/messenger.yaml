@@ -8,7 +8,10 @@ framework:
             # async: '%env(MESSENGER_TRANSPORT_DSN)%'
             # failed: 'doctrine://default?queue_name=failed'
             # sync: 'sync://'
+            skeleton_event.test_event: "%env(SKELETON_EVENT)%"
 
         routing:
+            'App\DataTransferObject\TestDataProvider':
+                - skeleton_event.test_event
             # Route your messages to the transports
             # 'App\Message\YourMessage': async

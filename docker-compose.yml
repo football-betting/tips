@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+    db:
+        image: mysql:5.7
+        environment:
+            MYSQL_ROOT_PASSWORD: admin
+        ports:
+            - 3336:3306
+    redis:
+        image: redis:6
+        command: redis-server --appendonly yes
+        ports:
+            - 6379:6379
+    rabbitmq:
+        image: rabbitmq:3.8-management
+        environment:
+            RABBITMQ_DEFAULT_USER: admin
+            RABBITMQ_DEFAULT_PASS: admin
+        ports:
+            - 15672:15672
+            - 5672:5672
