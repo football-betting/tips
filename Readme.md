@@ -1,6 +1,13 @@
 # Commands
 
 
+## Consume messages
+
+```
+php bin/console messenger:consume
+```
+
+
 ## Data Transfer 
 
 Console command:
