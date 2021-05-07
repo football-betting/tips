@@ -34,8 +34,9 @@ class AllMessage extends Command
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $infos = $this->redisService->getAll();
+        /** @var string $item */
         foreach ($infos as $item) {
-            $output->writeln((string)$item);
+            $output->writeln($item);
         }
 
         return 0;

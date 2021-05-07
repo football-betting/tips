@@ -42,7 +42,8 @@ class TestMessage extends Command
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $testDataProvider = new TestDataProvider();
-        $testDataProvider->setIdent(random_int(1, 100));
+
+        $testDataProvider->setIdent(time());
         $testDataProvider->setName('Test: ' . time());
 
         $this->message->send($testDataProvider);

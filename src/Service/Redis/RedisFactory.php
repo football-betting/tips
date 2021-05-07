@@ -25,16 +25,8 @@ final class RedisFactory
     public function getClient(): Client
     {
         if ($this->client === null) {
-            $this->createClient();
+            $this->client = new Client($this->uri);
         }
         return $this->client;
-    }
-
-    /**
-     * @return void
-     */
-    private function createClient(): void
-    {
-        $this->client = new Client($this->uri);
     }
 }

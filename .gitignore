@@ -21,3 +21,4 @@
 ###< symfony/phpunit-bridge ###
 
 .idea
+infection/

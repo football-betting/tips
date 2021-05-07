@@ -33,38 +33,40 @@ final class RedisService
     /**
      * @param string $key
      *
-     * @return string|null
+     * @return string
      */
-    public function get(string $key): ?string
+    public function get(string $key): string
     {
-        return $this->client->get($key);
+        return (string)$this->client->get($key);
     }
 
     public function getAll(): array
     {
-        $allKeys = $this->client->keys('*');
-        return $this->mget($allKeys);
+        $keys = $this->getKeys('*');
+        return $this->mget($keys);
+    }
+
+    public function getKeys(string $pattern): array
+    {
+        return (array)$this->client->keys($pattern);
     }
 
     /**
      * @param array $keys
-     * @psalm-param array<array-key, mixed> $keys
      *
      * @return array
      */
     public function mget(array $keys): array
     {
-        return $this->client->mget($keys);
+        return (array)$this->client->mget($keys);
     }
 
     /**
      * @param string $key
-     *
-     * @return int
      */
-    public function delete(string $key): int
+    public function delete(string $key): void
     {
-        return $this->client->del([$key]);
+        $this->client->del([$key]);
     }
 }
 
