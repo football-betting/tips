@@ -4,6 +4,7 @@ namespace App\Tests\Integration\MessageHandler;
 
 use App\DataTransferObject\TipDataProvider;
 use App\MessageHandler\TipMessageHandler;
+use App\Service\Redis\RedisService;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Component\Console\Tester\CommandTester;
@@ -12,6 +13,7 @@ use Symfony\Component\Messenger\MessageBusInterface;
 
 class MyMessageHandlerTest extends KernelTestCase
 {
+    private ?RedisService $redis;
     private CommandTester $commandTester;
 
     private MessageBusInterface $messageBus;
@@ -24,6 +26,7 @@ class MyMessageHandlerTest extends KernelTestCase
 
         $this->messageBus = static::$container->get(MessageBusInterface::class);
         $this->handler = static::$container->get(\App\Messenger\TipMessageHandler::class);
+        $this->redis = static::$container->get(RedisService::class);
 
         $application = new Application($this->appKernel);
 
@@ -48,6 +51,9 @@ class MyMessageHandlerTest extends KernelTestCase
 
         $handler = $this->handler;
         $handler($tipDataProvider);
+
+        $info = $this->redis->get('tip.list.to.calculation');
+
 //        $this->messageBus->dispatch($tipDataProvider);
 //        $this->callMessengerConsumeCommand();
 //

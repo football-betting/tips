@@ -31,6 +31,11 @@ final class RedisService
         $this->client->set($key, $value);
     }
 
+    public function get(string $key)
+    {
+        return $this->client->hgetall($key);
+    }
+
     public function getAllByUser(string $username): array
     {
         $keys = $this->getKeys($username.':*');
