@@ -7,6 +7,7 @@ use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
 final class RedisFactory
 {
+    private string $prefix;
     private string $uri;
 
     private ?Client $client = null;
@@ -17,6 +18,7 @@ final class RedisFactory
     public function __construct(ParameterBagInterface $params)
     {
         $this->uri = (string)$params->get('app.redis.uri');
+        $this->prefix = (string)$params->get('app.env');
     }
 
     /**
@@ -25,8 +27,13 @@ final class RedisFactory
     public function getClient(): Client
     {
         if ($this->client === null) {
-            $this->client = new Client($this->uri);
+            $this->client = new Client($this->uri, ['prefix' => $this->getPrefix()]);
         }
         return $this->client;
+    }
+
+    public function getPrefix(): string
+    {
+        return $this->prefix .':';
     }
 }

@@ -5,6 +5,7 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     app.redis.uri: '%env(REDIS)%'
+    app.env: '%env(APP_ENV)%'
 
 services:
     # default configuration for services in *this* file
@@ -18,19 +19,8 @@ services:
         resource: '../src/'
         exclude:
             - '../src/DependencyInjection/'
-            - '../src/Entity/'
             - '../src/Kernel.php'
             - '../src/Tests/'
-
-    # controllers are imported separately to make sure services can be injected
-    # as action arguments even if you don't extend any base controller class
-    App\Controller\:
-        resource: '../src/Controller/'
-        tags: ['controller.service_arguments']
-
-    # add more service definitions when explicit configuration is needed
-    # please note that last definitions always *replace* previous ones
-
     ###> Xervice\DataProvider ###
     Xervice\DataProvider\Communication\Console\CleanCommand:
         tags: [console.command]
@@ -38,5 +28,5 @@ services:
         tags: [console.command]
     ###< Xervice\DataProvider ###
 
-    App\MessageHandler\MyMessageHandler:
+    App\MessageHandler\TipMessageHandler:
         tags: [messenger.message_handler]

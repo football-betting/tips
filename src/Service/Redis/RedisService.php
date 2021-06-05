@@ -17,6 +17,7 @@ final class RedisService
     public function __construct(RedisFactory $redisFactory)
     {
         $this->client = $redisFactory->getClient();
+        $this->prefix = $redisFactory->getPrefix();
     }
 
     /**
@@ -30,43 +31,26 @@ final class RedisService
         $this->client->set($key, $value);
     }
 
-    /**
-     * @param string $key
-     *
-     * @return string
-     */
-    public function get(string $key): string
+    public function getAllByUser(string $username): array
     {
-        return (string)$this->client->get($key);
+        $keys = $this->getKeys($username.':*');
+        foreach ($keys as $id => $key) {
+           $keys[$id] = str_replace($this->prefix, '', $key);
+        }
+        return $this->client->mget($keys);
     }
 
-    public function getAll(): array
-    {
-        $keys = $this->getKeys('*');
-        return $this->mget($keys);
-    }
-
-    public function getKeys(string $pattern): array
+    private function getKeys(string $pattern): array
     {
         return (array)$this->client->keys($pattern);
     }
 
     /**
-     * @param array $keys
-     *
-     * @return array
-     */
-    public function mget(array $keys): array
-    {
-        return (array)$this->client->mget($keys);
-    }
-
-    /**
      * @param string $key
      */
-    public function delete(string $key): void
+    public function deleteAll(): void
     {
-        $this->client->del([$key]);
+        $this->client->del($this->getKeys('*'));
     }
 }
 

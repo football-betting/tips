@@ -11,7 +11,7 @@ framework:
             skeleton_event.test_event: "%env(SKELETON_EVENT)%"
 
         routing:
-            'App\DataTransferObject\TestDataProvider':
+            'App\DataTransferObject\TipEventDataProvider':
                 - skeleton_event.test_event
             # Route your messages to the transports
             # 'App\Message\YourMessage': async
