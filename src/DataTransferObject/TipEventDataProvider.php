@@ -8,25 +8,25 @@ namespace App\DataTransferObject;
 final class TipEventDataProvider extends \Xervice\DataProvider\Business\Model\DataProvider\AbstractDataProvider implements \Xervice\DataProvider\Business\Model\DataProvider\DataProviderInterface
 {
     /** @var array */
-    protected $tips;
+    protected $data;
 
 
     /**
      * @return array
      */
-    public function getTips(): array
+    public function getData(): array
     {
-        return $this->tips;
+        return $this->data;
     }
 
 
     /**
-     * @param array $tips
+     * @param array $data
      * @return TipEventDataProvider
      */
-    public function setTips(array $tips)
+    public function setData(array $data)
     {
-        $this->tips = $tips;
+        $this->data = $data;
 
         return $this;
     }
@@ -35,9 +35,9 @@ final class TipEventDataProvider extends \Xervice\DataProvider\Business\Model\Da
     /**
      * @return TipEventDataProvider
      */
-    public function unsetTips()
+    public function unsetData()
     {
-        $this->tips = null;
+        $this->data = null;
 
         return $this;
     }
@@ -46,9 +46,9 @@ final class TipEventDataProvider extends \Xervice\DataProvider\Business\Model\Da
     /**
      * @return bool
      */
-    public function hasTips()
+    public function hasData()
     {
-        return ($this->tips !== null && $this->tips !== []);
+        return ($this->data !== null && $this->data !== []);
     }
 
 
@@ -58,9 +58,9 @@ final class TipEventDataProvider extends \Xervice\DataProvider\Business\Model\Da
     protected function getElements(): array
     {
         return array (
-          'tips' =>
+          'data' =>
           array (
-            'name' => 'tips',
+            'name' => 'data',
             'allownull' => false,
             'default' => '',
             'type' => 'array',

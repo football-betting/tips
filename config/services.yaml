@@ -28,5 +28,5 @@ services:
         tags: [console.command]
     ###< Xervice\DataProvider ###
 
-    App\MessageHandler\TipMessageHandler:
+    App\Messenger\TipMessageHandler:
         tags: [messenger.message_handler]

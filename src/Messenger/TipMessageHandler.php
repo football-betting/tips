@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace App\MessageHandler;
+namespace App\Messenger;
 
 use App\DataTransferObject\TipDataProvider;
 use App\DataTransferObject\TipEventDataProvider;
@@ -30,7 +30,7 @@ class TipMessageHandler
         $userTips = $this->redisService->getAllByUser($message->getUser());
 
         $tipEventDataProvider = new TipEventDataProvider();
-        $tipEventDataProvider->setTips($userTips);
+        $tipEventDataProvider->setData($userTips);
 
         $this->messageBus->dispatch($tipEventDataProvider);
     }

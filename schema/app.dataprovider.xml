@@ -14,7 +14,7 @@
     </DataProvider>
 
     <DataProvider name="TipEvent">
-        <DataElement name="tips" type="array"/>
+        <DataElement name="data" type="array"/>
     </DataProvider>
 
 </DataProviders>
