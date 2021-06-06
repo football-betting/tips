@@ -33,7 +33,7 @@ final class RedisService
 
     public function get(string $key)
     {
-        return $this->client->hgetall($key);
+        return $this->client->zrevrange($key, 0, 100);
     }
 
     public function getAllByUser(string $username): array
@@ -55,7 +55,11 @@ final class RedisService
      */
     public function deleteAll(): void
     {
-        $this->client->del($this->getKeys('*'));
+        $keys = $this->getKeys('*');
+        foreach ($keys as $id => $key) {
+            $keys[$id] = str_replace($this->prefix, '', $key);
+        }
+        $this->client->del($keys);
     }
 }
 

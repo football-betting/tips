@@ -1,0 +1,4 @@
+doctrine:
+    dbal:
+        override_url: true
+        url: '%env(resolve:DATABASE_URL)%'
