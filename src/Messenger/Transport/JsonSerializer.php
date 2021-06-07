@@ -16,7 +16,7 @@ class JsonSerializer implements SerializerInterface
         if (!isset($encodedEnvelope['body'])) {
             throw new \LogicException('incorect message');
         }
-        dump($encodedEnvelope);
+
         $data = json_decode($encodedEnvelope['body'], true);
 
         if (!isset($data['event'])) {
