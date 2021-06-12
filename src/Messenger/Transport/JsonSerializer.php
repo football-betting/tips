@@ -32,8 +32,6 @@ class JsonSerializer implements SerializerInterface
         }
 
         throw new \RuntimeException('Incorrect event: ' . $data['event']);
-
-
     }
 
     public function encode(Envelope $envelope): array

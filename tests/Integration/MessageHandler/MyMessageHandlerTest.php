@@ -34,7 +34,6 @@ class MyMessageHandlerTest extends KernelTestCase
             ->get('doctrine.dbal.default_connection');
 
 
-        $this->messageBus = static::$container->get(MessageBusInterface::class);
         $this->handler = static::$container->get(\App\Messenger\TipMessageHandler::class);
         $this->redis = static::$container->get(RedisService::class);
 
