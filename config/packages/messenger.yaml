@@ -9,6 +9,5 @@ framework:
         routing:
             'App\DataTransferObject\TipEventDataProvider':
                 - tip.list.to.calculation
-
             'App\DataTransferObject\TipDataProvider':
                 - app.to.tip
