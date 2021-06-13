@@ -26,7 +26,7 @@ class JsonSerializer implements SerializerInterface
         if ($data['event'] === "app.to.tip") {
             // schema validation
             $tipDataProvider = new TipDataProvider();
-            $tipDataProvider->fromArray($data);
+            $tipDataProvider->fromArray($data['data']);
 
             return new Envelope($tipDataProvider);
         }
