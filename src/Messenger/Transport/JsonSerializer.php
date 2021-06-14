@@ -27,8 +27,7 @@ class JsonSerializer implements SerializerInterface
             // schema validation
             $tipDataProvider = new TipDataProvider();
             $tipDataProvider->fromArray($data['data']);
-            $tipDataProvider->setEvent($data['event']);
-            
+
             return new Envelope($tipDataProvider);
         }
 
@@ -52,7 +51,11 @@ class JsonSerializer implements SerializerInterface
                 'data' => $message->toArray(),
             ];
         }
-        
+
+        if (method_exists($message, 'getEvent') && $message->hasEvent()) {
+            $eventMessage['event'] = $message->getEvent();
+        }
+
         $stamps = $envelope->all();
         foreach ($stamps as $stampList) {
             foreach ($stampList as $stamp) {
