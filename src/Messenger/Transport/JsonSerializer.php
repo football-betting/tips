@@ -27,7 +27,8 @@ class JsonSerializer implements SerializerInterface
             // schema validation
             $tipDataProvider = new TipDataProvider();
             $tipDataProvider->fromArray($data['data']);
-
+            $tipDataProvider->setEvent($data['event']);
+            
             return new Envelope($tipDataProvider);
         }
 
