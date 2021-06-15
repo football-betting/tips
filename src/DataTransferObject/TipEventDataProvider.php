@@ -7,12 +7,15 @@ namespace App\DataTransferObject;
  */
 final class TipEventDataProvider extends \Xervice\DataProvider\Business\Model\DataProvider\AbstractDataProvider implements \Xervice\DataProvider\Business\Model\DataProvider\DataProviderInterface
 {
-    /** @var array */
-    protected $data;
+    /** @var \App\DataTransferObject\TipDataProvider[] */
+    protected $data = [];
+
+    /** @var string */
+    protected $event;
 
 
     /**
-     * @return array
+     * @return \App\DataTransferObject\TipDataProvider[]
      */
     public function getData(): array
     {
@@ -21,7 +24,7 @@ final class TipEventDataProvider extends \Xervice\DataProvider\Business\Model\Da
 
 
     /**
-     * @param array $data
+     * @param \App\DataTransferObject\TipDataProvider[] $data
      * @return TipEventDataProvider
      */
     public function setData(array $data)
@@ -53,6 +56,57 @@ final class TipEventDataProvider extends \Xervice\DataProvider\Business\Model\Da
 
 
     /**
+     * @param \App\DataTransferObject\TipDataProvider $Tip
+     * @return TipEventDataProvider
+     */
+    public function addTip(TipDataProvider $Tip)
+    {
+        $this->data[] = $Tip; return $this;
+    }
+
+
+    /**
+     * @return string
+     */
+    public function getEvent(): string
+    {
+        return $this->event;
+    }
+
+
+    /**
+     * @param string $event
+     * @return TipEventDataProvider
+     */
+    public function setEvent(string $event)
+    {
+        $this->event = $event;
+
+        return $this;
+    }
+
+
+    /**
+     * @return TipEventDataProvider
+     */
+    public function unsetEvent()
+    {
+        $this->event = null;
+
+        return $this;
+    }
+
+
+    /**
+     * @return bool
+     */
+    public function hasEvent()
+    {
+        return ($this->event !== null && $this->event !== []);
+    }
+
+
+    /**
      * @return array
      */
     protected function getElements(): array
@@ -63,7 +117,19 @@ final class TipEventDataProvider extends \Xervice\DataProvider\Business\Model\Da
             'name' => 'data',
             'allownull' => false,
             'default' => '',
-            'type' => 'array',
+            'type' => '\\App\\DataTransferObject\\TipDataProvider[]',
+            'is_collection' => true,
+            'is_dataprovider' => false,
+            'isCamelCase' => false,
+            'singleton' => 'Tip',
+            'singleton_type' => '\\App\\DataTransferObject\\TipDataProvider',
+          ),
+          'event' =>
+          array (
+            'name' => 'event',
+            'allownull' => false,
+            'default' => '',
+            'type' => 'string',
             'is_collection' => false,
             'is_dataprovider' => false,
             'isCamelCase' => false,

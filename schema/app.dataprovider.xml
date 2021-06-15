@@ -14,7 +14,8 @@
     </DataProvider>
 
     <DataProvider name="TipEvent">
-        <DataElement name="data" type="array"/>
+        <DataElement name="data" type="Tip[]" singleton="Tip"/>
+        <DataElement name="event" type="string"/>
     </DataProvider>
 
 </DataProviders>

@@ -30,7 +30,12 @@ class TipMessageHandler
         $userTips = $this->redisService->getAllByUser($message->getUser());
 
         $tipEventDataProvider = new TipEventDataProvider();
-        $tipEventDataProvider->setData($userTips);
+        foreach ($userTips as $tip) {
+            $tipDataProvider = new TipDataProvider();
+            $tipDataProvider->fromArray(\Safe\json_decode($tip, true));
+
+            $tipEventDataProvider->addTip($tipDataProvider);
+        }
 
         $this->messageBus->dispatch($tipEventDataProvider);
     }

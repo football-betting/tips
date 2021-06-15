@@ -169,13 +169,7 @@ class MyMessageHandlerTest extends KernelTestCase
         $dataProvider = new TipEventDataProvider();
         $dataProvider->fromArray(json_decode($messageDetail['body'], true));
 
-        $tipDataProviderList = [];
-        foreach ($dataProvider->getData() as $json) {
-            $tipDataProvider = new TipDataProvider();
-            $tipDataProvider->fromArray(json_decode($json, true));
-            $tipDataProviderList[] = $tipDataProvider;
-        }
-        return $tipDataProviderList;
+        return $dataProvider->getData();
     }
 
     private function callMessengerConsumeCommand(): void
