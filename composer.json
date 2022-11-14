@@ -31,6 +31,10 @@
         "sort-packages": true,
         "platform": {
             "php": "7.4.15"
+        },
+        "allow-plugins": {
+            "infection/extension-installer": true,
+            "symfony/flex": true
         }
     },
     "autoload": {
