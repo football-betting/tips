@@ -19,19 +19,16 @@ class JsonSerializer implements SerializerInterface
 
         $data = json_decode($encodedEnvelope['body'], true);
 
-        if (!isset($data['event'])) {
-            throw new \LogicException('incorect message: event');
-        }
 
-        if ($data['event'] === "app.to.tip") {
+        $tipDataProvider = new TipDataProvider();
+        $tipDataProvider->fromArray($data['data']);
+
+        if (!empty($tipDataProvider->getMatchId())) {
             // schema validation
-            $tipDataProvider = new TipDataProvider();
-            $tipDataProvider->fromArray($data['data']);
-
             return new Envelope($tipDataProvider);
         }
 
-        throw new \RuntimeException('Incorrect event: ' . $data['event']);
+        throw new \RuntimeException('Incorrect body: ' . $encodedEnvelope['body']);
     }
 
     public function encode(Envelope $envelope): array
