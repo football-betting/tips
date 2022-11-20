@@ -9,9 +9,6 @@
         "ext-iconv": "*",
         "ext-json": "*",
         "composer/package-versions-deprecated": "1.11.99.1",
-        "doctrine/doctrine-bundle": "^2.3",
-        "doctrine/doctrine-migrations-bundle": "^3.1",
-        "doctrine/orm": "^2.8",
         "predis/predis": "^1.1",
         "symfony/console": "5.2.*",
         "symfony/dotenv": "5.2.*",
@@ -20,6 +17,7 @@
         "symfony/http-client": "5.2.*",
         "symfony/messenger": "5.2.*",
         "symfony/proxy-manager-bridge": "5.2.*",
+        "symfony/serializer": "5.2.*",
         "symfony/yaml": "5.2.*",
         "xervice/data-provider": "^2.5"
     },
@@ -30,7 +28,7 @@
         },
         "sort-packages": true,
         "platform": {
-            "php": "7.4.15"
+            "php": "7.4.21"
         },
         "allow-plugins": {
             "infection/extension-installer": true,
