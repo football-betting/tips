@@ -32,7 +32,7 @@ class TipMessageHandler
         $tipEventDataProvider = new TipEventDataProvider();
         foreach ($userTips as $tip) {
             $tipDataProvider = new TipDataProvider();
-            $tipDataProvider->fromArray(\Safe\json_decode($tip, true));
+            $tipDataProvider->fromArray(json_decode($tip, true));
 
             $tipEventDataProvider->addTip($tipDataProvider);
         }
